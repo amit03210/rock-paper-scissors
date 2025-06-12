@@ -66,10 +66,17 @@ function getComputerChoice(){
 }
 
 function getHumanChoice() {
-    let userInput = null;
+    let userInput = "";
     console.log("Enter your choice between rock, paper and scissor")
-    userInput = prompt("Please enter your choice").toLowerCase();
+    userInput = prompt("Please enter your choice");
+    if(userInput == null){
+    return;
+    } else
+        userInput.toLowerCase();
     while(userInput != 'rock' && userInput !='paper' && userInput !='scissor'){
+        if(userInput == null){
+            return;
+        }
         console.log("Please enter correct options between rock, paper and scissor");
         userInput = prompt("Enter your choice");
     }
@@ -85,6 +92,10 @@ function playRound(){
     let scissorWeight = false;
     let tie = false;
 
+if(userChoice == null){
+        return;
+    }
+
     function winningLogic(choice1, choice2){
         if((choice1 == 'rock' && choice2 == 'paper') || (choice1 == 'paper' && choice2 == 'rock')){
             return paperWeight = true;
@@ -95,6 +106,7 @@ function playRound(){
         } else return tie = true;
     }
 
+    
     winningLogic(userChoice, computerChoice);
 
     if (rockWeight){
@@ -148,6 +160,7 @@ function playRound(){
 }
 
 function startGame() {
+    console.log("Reload the page To start the game.")
     humanScore = 0;
     computerScore = 0;
     roundLevel = 0;
@@ -156,9 +169,15 @@ function startGame() {
     while(roundLevel<5){
         console.log(`Round Number: ${roundLevel+1}`);
         let gameSuccessOrNot = playRound();
+        if(gameSuccessOrNot == null){
+            console.log("Human chose to quit the game, Human Lost, reload to refresh");
+            return;
+        }
         gameSuccessOrNot? roundLevel +=1: roundLevel;
-        console.log("=============================================================================");
-    }
+        console.log(`============================================================================
+            
+            `);
+}
 
 console.log(`
     Final Score
