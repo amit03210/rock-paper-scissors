@@ -53,4 +53,123 @@
     // Declare winner
 
 
+let humanScore = 0;
+let computerScore = 0;
+let roundLevel = 0;
 
+function getComputerChoice(){
+    rand = (Math.floor(Math.random() * 100)) % 3;
+    
+    let compChoice = rand == 0 ? "rock": rand == 1 ? "paper": "scissor"; 
+    // console.log(`Computer choice is: ${compChoice}`);
+    return compChoice;
+}
+
+function getHumanChoice() {
+    let userInput = null;
+    console.log("Enter your choice between rock, paper and scissor")
+    userInput = prompt("Please enter your choice").toLowerCase();
+    while(userInput != 'rock' && userInput !='paper' && userInput !='scissor'){
+        console.log("Please enter correct options between rock, paper and scissor");
+        userInput = prompt("Enter your choice");
+    }
+    console.log(`Human choice is: ${userInput}`);
+    return userInput;
+}
+
+function playRound(){
+    let userChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    let rockWeight = false;
+    let paperWeight = false;
+    let scissorWeight = false;
+    let tie = false;
+
+    function winningLogic(choice1, choice2){
+        if((choice1 == 'rock' && choice2 == 'paper') || (choice1 == 'paper' && choice2 == 'rock')){
+            return paperWeight = true;
+        } else if((choice1 == 'rock' && choice2 == 'scissor') || (choice1 == 'scissor' && choice2 == 'rock')){
+            return rockWeight = true;
+        } else if((choice1 == 'paper' && choice2 == 'scissor') || (choice1 == 'scissor' && choice2 == 'paper')){ 
+            return scissorWeight = true;
+        } else return tie = true;
+    }
+
+    winningLogic(userChoice, computerChoice);
+
+    if (rockWeight){
+        if (userChoice == 'rock'){
+            humanScore +=1;
+            // roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        } else {
+            computerScore +=1;
+            // roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        }
+        //if not tie
+        return true; 
+    } else if (paperWeight){
+        if (userChoice == 'paper'){
+            humanScore +=1;
+            //  roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        } else {
+            computerScore +=1;
+            // roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        }
+        //if not tie
+        return true;
+    } else if (scissorWeight) {
+        if (userChoice == 'scissor'){
+            humanScore +=1;
+            // roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        } else {
+            computerScore +=1;
+            // roundLevel += 1;
+            console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
+            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+        }
+        //if not tie
+        return true;
+    } else{
+        console.log(`Both have same choice of Human's ${userChoice} and Computer's ${computerChoice}, therefore this round is draw, This round will not be counted`)
+        //if tie
+        return false;
+    }
+
+}
+
+function startGame() {
+    humanScore = 0;
+    computerScore = 0;
+    roundLevel = 0;
+
+    //Looping and increasing roundLevel Counter
+    while(roundLevel<5){
+        console.log(`Round Number: ${roundLevel+1}`);
+        let gameSuccessOrNot = playRound();
+        gameSuccessOrNot? roundLevel +=1: roundLevel;
+        console.log("=============================================================================");
+    }
+
+console.log(`
+    Final Score
+    -------------
+    Human: ${humanScore}
+    Computer: ${computerScore}`)
+
+if(humanScore > computerScore){
+    console.log("Human Won");
+} else console.log("Computer won");
+
+}
+
+startGame()
