@@ -67,17 +67,16 @@ function getComputerChoice(){
 
 function getHumanChoice() {
     let userInput = "";
-    console.log("Enter your choice between rock, paper and scissor")
+    console.log("Rock, Paper or Scissor?")
     userInput = prompt("Please enter your choice");
     if(userInput == null){
     return;
-    } else
-        userInput.toLowerCase();
+    } else userInput = userInput.toLowerCase();
     while(userInput != 'rock' && userInput !='paper' && userInput !='scissor'){
         if(userInput == null){
             return;
         }
-        console.log("Please enter correct options between rock, paper and scissor");
+        console.log("Please enter correct options: Rock, Paper and Scissor?");
         userInput = prompt("Enter your choice");
     }
     console.log(`Human choice is: ${userInput}`);
@@ -114,12 +113,16 @@ if(userChoice == null){
             humanScore +=1;
             // roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Human won round no: ${roundLevel+1} 
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         } else {
             computerScore +=1;
             // roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Computer won round no: ${roundLevel+1}
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         }
         //if not tie
         return true; 
@@ -128,12 +131,16 @@ if(userChoice == null){
             humanScore +=1;
             //  roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Human won round no: ${roundLevel+1}
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         } else {
             computerScore +=1;
             // roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Computer won round no: ${roundLevel+1}
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         }
         //if not tie
         return true;
@@ -142,17 +149,21 @@ if(userChoice == null){
             humanScore +=1;
             // roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Human won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Human won round no: ${roundLevel+1}
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         } else {
             computerScore +=1;
             // roundLevel += 1;
             console.log(`Human choose: ${userChoice} and Computer choose: ${computerChoice}`);
-            console.log(`Computer won round ${roundLevel+1}: Human Score: ${humanScore}, Computer Score: ${computerScore}`);
+            console.log(`
+                Computer won round no: ${roundLevel+1}
+                Human Score: ${humanScore}, Computer Score: ${computerScore}`);
         }
         //if not tie
         return true;
     } else{
-        console.log(`Both have same choice of Human's ${userChoice} and Computer's ${computerChoice}, therefore this round is draw, This round will not be counted`)
+        console.log(`Its a tie, this round won't be counted`)
         //if tie
         return false;
     }
